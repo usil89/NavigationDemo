@@ -9,15 +9,29 @@ function HomeScreen({navigation}) {
   return (
     <View style={StyleSheet.create}>
       <Text>Home Screen</Text>
-      <Button title="Go To Details" onPress={() => navigation.navigate('Details')}></Button>
+      <Button title="Go To Details" onPress={() => navigation.navigate('Details' ,
+          { 
+            itemId : 86,
+            otherParam :' Something from Home',
+          })
+        }>
+
+      </Button>
     </View>
   )
 }
 
-function DetailsScreen({navigation}) {
+function DetailsScreen({ route, navigation}) {
+
+  const { itemId, otherParam } = route.params;
+
   return (
     <View style={StyleSheet.create}>
       <Text>Details Screen</Text>
+
+      <Text>Item Id : {JSON.stringify(itemId)}</Text>
+      <Text>otherParam : {JSON.stringify(otherParam)}</Text>
+
       <Button title="Go To Details2" onPress={() => navigation.push('Details2')}></Button>
       <Button title="Go To Home" onPress={() => navigation.navigate('Home')}></Button>
       <Button title="Go back" onPress={() => navigation.goBack()}></Button>
@@ -28,7 +42,7 @@ function DetailsScreen({navigation}) {
 function Details2Screen({navigation}) {
   return (
     <View style={StyleSheet.create}>
-      <Text>Details Screen</Text>
+      <Text>Details 2 Screen</Text>
       <Button title="Go To Details" onPress={() => navigation.push('Details')}></Button>
       <Button title='Go Back to first screen in stack' onPress={() => navigation.popToTop()}></Button>
     </View>
