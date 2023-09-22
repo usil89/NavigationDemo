@@ -19,6 +19,8 @@ function DetailsScreen({navigation}) {
     <View style={StyleSheet.create}>
       <Text>Details Screen</Text>
       <Button title="Go To Details2" onPress={() => navigation.push('Details2')}></Button>
+      <Button title="Go To Home" onPress={() => navigation.navigate('Home')}></Button>
+      <Button title="Go back" onPress={() => navigation.goBack()}></Button>
     </View>
   )
 }
